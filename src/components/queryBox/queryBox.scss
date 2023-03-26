@@ -1,0 +1,33 @@
+.queryBox {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 1px solid lightgray;
+  background-color: white;
+  cursor: pointer;
+  &:hover {
+    border: 1x solid gray;
+  }
+
+  border-radius: 5px;
+  .queryBox_info {
+    display: flex;
+    align-items: center;
+
+    h5 {
+      color: rgb(129, 129, 129);
+      font-weight: 300;
+      margin-left: 10px;
+    }
+  }
+  .queryBox_quora {
+    display: flex;
+    margin-top: 8px;
+
+    p {
+      color: gray;
+      font-weight: bold;
+      font-size: large;
+    }
+  }
+}

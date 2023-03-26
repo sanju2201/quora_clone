@@ -1,0 +1,106 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+
+  .post_info {
+    display: flex;
+    align-items: center;
+    h5 {
+      margin-left: 10px;
+      cursor: pointer;
+      font-size: 13px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    small {
+      margin-left: 10px;
+    }
+  }
+  .post_body {
+    display: flex;
+    flex-direction: column;
+    .post_question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      font-weight: bold;
+      margin-bottom: 10px;
+
+      p {
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .post_btnAnswer {
+        font-size: 0.8rem;
+        padding: 2px 10px;
+        color: gray;
+        border: 1px solid gray;
+        &:hover {
+          color: black;
+          background-color: lightgray;
+        }
+      }
+    }
+    .post_answer {
+    }
+
+    img {
+      object-fit: contain;
+      width: 100%;
+      cursor: pointer;
+    }
+  }
+  .post_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+    .MuiSvgIcon-root {
+      color: gray;
+      cursor: pointer;
+    }
+
+    span {
+      color: gray;
+      font-size: 0.9rem;
+    }
+
+    .post_footerActions {
+      display: flex;
+      gap: 20px;
+
+      .post_footerAction {
+        display: flex;
+        align-items: center;
+        background-color: lightgray;
+        padding: 5px 30px;
+        border-radius: 20px;
+        cursor: pointer;
+        border: 1px solid gray;
+
+        .upvote {
+        }
+        .downvote {
+        }
+      }
+
+      .comment {
+      }
+      .share {
+      }
+    }
+
+    .post_more {
+    }
+  }
+}

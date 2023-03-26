@@ -1,0 +1,97 @@
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1px;
+  background-color: white;
+  width: 100%;
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+  box-shadow: 0px 5px 8px -9px rgba(0, 0, 0, 0.5);
+
+  .navbar_logo {
+    img {
+      height: 25px;
+      margin-right: 20px;
+    }
+  }
+  .navbar_icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+
+    .navbar_icon {
+      color: gray;
+      cursor: pointer;
+      padding: 5px 18px;
+      border-radius: 10px;
+
+      &:hover {
+        color: #a0201c;
+        background-color: rgb(242, 242, 242);
+      }
+
+      .MuiSvgIcon-root {
+        font-size: 2rem;
+      }
+    }
+  }
+  .navbar_input {
+    width: 20%;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    border: 1px solid lightgray;
+
+    .MuiSvgIcon-root {
+      color: gray;
+    }
+
+    input {
+      width: 100%;
+      background-color: transparent;
+      outline: none;
+      border: none;
+      color: rgb(49, 49, 49);
+    }
+  }
+  .navbar_right {
+    display: flex;
+    align-items: center;
+    margin-left: 25px;
+
+    .navbar_avatar {
+      .MuiAvatar-root {
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+      }
+    }
+    .MuiSvgIcon-root {
+      font-size: 2rem;
+      color: gray;
+      cursor: pointer;
+      margin: 0 20px;
+
+      &:hover {
+        color: #a0201c;
+      }
+    }
+    .MuiButtonBase-root {
+      width: 10rem;
+      font-size: 0.8rem;
+      color: white;
+      text-transform: inherit;
+      background-color: #a0201c;
+      border-radius: 20px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #861e1a;
+        box-shadow: 0px 1px 1px 1px gray;
+      }
+    }
+  }
+}
