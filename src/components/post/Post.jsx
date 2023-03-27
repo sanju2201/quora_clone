@@ -25,7 +25,7 @@ const Post = () => {
           <p></p>
         </div>
         <img
-          src="https://qph.cf2.quoracdn.net/main-qimg-bf8f59840ca27498ee9d1eb33b0f7c13-lq"
+          src="https://qph.cf2.quoracdn.net/main-qimg-d7c08d5d18b18b1665f0a576d7f39caf"
           alt="post"
         />
       </div>
@@ -34,7 +34,7 @@ const Post = () => {
           <div className="post_footerAction">
             <div className="upvote">
               <ThumbUpOutlinedIcon />
-              <small>Upvote {123}</small>
+              <small>Upvote. {123}</small>
             </div>
             <div className="downvote">
               <ThumbDownOutlinedIcon />

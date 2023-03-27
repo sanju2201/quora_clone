@@ -79,28 +79,73 @@
       display: flex;
       gap: 20px;
 
+      small {
+        color: gray;
+        font-weight: 500;
+      }
+
       .post_footerAction {
         display: flex;
         align-items: center;
-        background-color: lightgray;
-        padding: 5px 30px;
-        border-radius: 20px;
         cursor: pointer;
-        border: 1px solid gray;
 
         .upvote {
+          height: 100%;
+          display: flex;
+          gap: 5px;
+          align-items: center;
+          padding-right: 5px;
+          padding-left: 20px;
+          border: 1px solid gray;
+          border-radius: 20px 0 0 20px;
+          background-color: rgb(236, 236, 236);
+
+          &:hover {
+            background-color: rgb(225, 225, 225);
+          }
         }
         .downvote {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          padding-left: 5px;
+          padding-right: 20px;
+          border: 1px solid gray;
+          border-radius: 0 20px 20px 0;
+          background-color: rgb(236, 236, 236);
+
+          &:hover {
+            background-color: rgb(225, 225, 225);
+          }
         }
       }
 
       .comment {
+        display: flex;
+        align-items: center;
+        padding: 5px 10px;
+        &:hover {
+          background-color: rgb(237, 237, 237);
+          border-radius: 20px;
+          border: 1px solid rgb(215, 215, 215);
+        }
       }
       .share {
+        display: flex;
+        align-items: center;
+        padding: 5px 10px;
+        &:hover {
+          background-color: rgb(237, 237, 237);
+          border-radius: 20px;
+          border: 1px solid rgb(215, 215, 215);
+        }
       }
     }
 
     .post_more {
+      display: flex;
+      cursor: pointer;
+      align-items: center;
     }
   }
 }

@@ -8,6 +8,11 @@ const Feed = () => {
     <div className="feed">
       <QueryBox />
       <Post />
+      <Post />
+      <Post />
+      <Post />
+      <Post />
+      <Post />
     </div>
   );
 };
