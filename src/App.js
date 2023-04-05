@@ -12,7 +12,8 @@ function App() {
   const user = useSelector(selectUser);
   return (
     <div className="App">
-      {user ? (<Quora />) : (<Login />)}
+      {/* {user ? (<Quora />) : (<Login />)} */}
+      <Quora />
 
     </div>
   );
