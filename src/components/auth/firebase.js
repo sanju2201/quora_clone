@@ -13,11 +13,7 @@ import {
 } from "firebase/auth";
 import {
     getFirestore,
-    query,
-    getDocs,
-    collection,
-    where,
-    addDoc,
+    onAuthStateChanged
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -42,7 +38,11 @@ const facebookProvider = new FacebookAuthProvider();
 const signInWithGoogle = async () => {
     try {
         const res = await signInWithPopup(auth, googleProvider);
-        return true;
+
+        if (auth) {
+            console.log(auth)
+            return true;
+        }
     } catch (err) {
         alert(err.message);
         return false;
@@ -51,7 +51,10 @@ const signInWithGoogle = async () => {
 const signInWithFacebook = async () => {
     try {
         const res = await signInWithPopup(auth, facebookProvider);
-        return true;
+        if (auth) {
+            console.log(auth)
+            return true;
+        }
     } catch (err) {
         alert(err.message);
         return false;
@@ -62,8 +65,10 @@ const signInWithFacebook = async () => {
 const logInWithEmailAndPassword = async (email, password) => {
     try {
         await signInWithEmailAndPassword(auth, email, password);
-        await printAuth();
-        return true;
+        if (auth) {
+            console.log(auth)
+            return true;
+        }
     } catch (err) {
         alert(err.message);
         return false;
@@ -79,6 +84,10 @@ const printAuth = () => {
 const registerWithEmailAndPassword = async (name, email, password) => {
     try {
         const res = await createUserWithEmailAndPassword(auth, email, password);
+        if (auth) {
+            console.log(auth)
+            return true;
+        }
     } catch (err) {
         alert(err.message);
     }

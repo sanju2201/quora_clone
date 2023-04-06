@@ -2,6 +2,7 @@ import React, { useReducer, useState } from "react";
 import "./login.scss";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { dispatchFun } from "../../App";
+import { useNavigate } from "react-router-dom";
 
 import {
   auth,
@@ -14,23 +15,18 @@ import {
 } from "./firebase";
 
 const Login = () => {
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const signIn = () => {};
+  const navigate = useNavigate();
 
   const handleSignIn = (e) => {
     e.preventDefault();
+    logInWithEmailAndPassword(email, password);
+    auth && navigate("/");
+    setEmail("");
+    setPassword("");
   };
 
-  const handleRegister = (e) => {
-    e.preventDefault();
-  };
-
-  const HandleReset = (e) => {
-    e.preventDefault();
-  };
   return (
     <div className="login">
       <div className="login__container">
@@ -51,7 +47,7 @@ const Login = () => {
                 src="https://media-public.canva.com/MADnBiAubGA/3/screen.svg"
                 alt=""
               />
-              <p onClick={signIn}>Continue With Google</p>
+              <p onClick={signInWithGoogle}>Continue With Google</p>
             </div>
             <div className="login__authOption">
               <img
@@ -85,8 +81,10 @@ const Login = () => {
               </div>
             </div>
             <div className="login__forgButt">
-              <small>Forgot Password?</small>
-              <button onClick={() => {}}>Register</button>
+              <small onClick={() => navigate("/forgotPassword")}>
+                Forgot Password?
+              </small>
+              <button onClick={() => navigate("/register")}>Register</button>
             </div>
             <button onClick={handleSignIn}>Login</button>
           </div>

@@ -22,6 +22,8 @@ const Login = () => {
 
     const HandleReset = (e) => {
         e.preventDefault();
+        setEmail("");
+
     };
     return (
         <div className="login">

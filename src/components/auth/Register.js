@@ -2,6 +2,7 @@ import React, { useReducer, useState } from "react";
 import "./register.scss";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { dispatchFun } from "../../App";
+import { useNavigate } from "react-router-dom";
 
 import {
     auth,
@@ -19,21 +20,17 @@ const Register = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
-
-    const signIn = () => { };
-
-    const handleSignIn = (e) => {
-        e.preventDefault();
-    };
+    const navigate = useNavigate();
 
     const handleRegister = (e) => {
         e.preventDefault();
+        registerWithEmailAndPassword(name, email, password);
+        auth && navigate("/")
+        setName("");
+        setEmail("");
+        setPassword("");
     };
 
-    const HandleReset = (e) => {
-        e.preventDefault();
-    };
     return (
         <div className="login">
             <div className="login__container">
@@ -54,7 +51,7 @@ const Register = () => {
                                 src="https://media-public.canva.com/MADnBiAubGA/3/screen.svg"
                                 alt=""
                             />
-                            <p onClick={signIn}>Continue With Google</p>
+                            <p onClick={signInWithGoogle}>Continue With Google</p>
                         </div>
                         <div className="login__authOption">
                             <img
@@ -62,7 +59,7 @@ const Register = () => {
                                 src="https://1000logos.net/wp-content/uploads/2016/11/Facebook-logo-500x350.png"
                                 alt=""
                             />
-                            <span>Continue With Facebook</span>
+                            <span onClick={signInWithFacebook}>Continue With Facebook</span>
                         </div>
                     </div>
                     <div className="login__emailPass">
@@ -96,7 +93,7 @@ const Register = () => {
                             </div>
                         </div>
                         <div className="login__forgButt">
-                            <small>Already have a account?</small>
+                            <small onClick={() => navigate("/login")}>Already have a account?</small>
                         </div>
                         <button onClick={handleRegister}>Register</button>
                     </div>

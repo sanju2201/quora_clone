@@ -7,6 +7,7 @@ import { selectUser } from './features/userSlice';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import ForgotPassword from './components/auth/ForgotPassword';
+import { auth } from './components/auth/firebase';
 let dispatchFun = {};
 const initialState = { status: "login" };
 
@@ -25,6 +26,7 @@ const reducer = (state, action) => {
   }
 };
 
+console.log(auth)
 function App() {
   const user = useSelector(selectUser);
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -44,6 +46,7 @@ function App() {
             </Route> */}
           </Route>
         </Routes>
+
       </BrowserRouter>
     </div>
   );
