@@ -1,33 +1,82 @@
+import React, { useState } from "react";
 import { Avatar } from "@mui/material";
-import React from "react";
 import "./post.scss";
-import { Button } from "@mui/material";
+import { Button, Input } from "@mui/material";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import LoopOutlinedIcon from "@mui/icons-material/LoopOutlined";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
+import Modal from "react-modal";
+import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
+import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
+import LinkOutlinedIcon from "@mui/icons-material/LinkOutlined";
 
-const Post = () => {
+const Post = ({ id, image, question, timestamp, quoraUser }) => {
+  const [openModal, setOpenModal] = useState(false);
+  const [answer, setAnswer] = useState("");
+
+  const handleAddAnswer = () => {};
+
   return (
     <div className="post">
       <div className="post_info">
-        <Avatar />
-        <h5>Username</h5>
-        <small>Timestamp</small>
+        <Avatar src={quoraUser.photo} />
+        <h4>
+          {quoraUser.displayName ? quoraUser.displayName : quoraUser.email}
+        </h4>
+        <small>{new Date(timestamp?.toDate()).toLocaleString()}</small>
       </div>
       <div className="post_body">
         <div className="post_question">
-          <p>Question</p>
-          <Button className="post_btnAnswer">Answer</Button>
+          <p>{question}</p>
+          <Button className="post_btnAnswer" onClick={() => setOpenModal(true)}>
+            Answer
+          </Button>
+          <Modal
+            isOpen={openModal}
+            ariaHideApp={false}
+            onRequestClose={() => setOpenModal(false)}
+            shouldCloseOnOverlayClick={false}
+          >
+            <div className="modal__question">
+              <h1>{question}</h1>
+              <p>
+                asked by{" "}
+                <span className="name">
+                  {quoraUser.displayName
+                    ? quoraUser.displayName
+                    : quoraUser.email}
+                </span>{" "}
+                {""}
+                on{" "}
+                <span className="name">
+                  {new Date(timestamp?.toDate()).toLocaleString()}
+                </span>
+              </p>
+            </div>
+            <div className="modal__answer">
+              <textarea
+                value={answer}
+                onChange={(e) => setAnswer(e.target.value)}
+                placeholder="Enter Your Answer"
+                type="text"
+              />
+            </div>
+            <div className="modal__button">
+              <button className="cancle" onClick={() => setOpenModal(false)}>
+                Cancel
+              </button>
+              <button type="sumbit" onClick={handleAddAnswer} className="add">
+                Add Answer
+              </button>
+            </div>
+          </Modal>
         </div>
         <div className="post_answer">
           <p></p>
         </div>
-        <img
-          src="https://qph.cf2.quoracdn.net/main-qimg-d7c08d5d18b18b1665f0a576d7f39caf"
-          alt="post"
-        />
+        <img src={image} alt="post" />
       </div>
       <div className="post_footer">
         <div className="post_footerActions">

@@ -1,30 +1,68 @@
 import React, { useReducer, useState } from "react";
 import "./login.scss";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { dispatchFun } from "../../App";
+// import { dispatchFun } from "../../App";
 import { useNavigate } from "react-router-dom";
 
 import {
   auth,
-  signInWithGoogle,
-  signInWithFacebook,
-  logInWithEmailAndPassword,
-  registerWithEmailAndPassword,
-  sendPasswordReset,
-  logout,
+  db,
+  googleProvider,
+  facebookProvider,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
+  signOut,
+  onAuthStateChanged,
 } from "./firebase";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
 
-  const handleSignIn = (e) => {
+  const handleSignIn = async (e) => {
     e.preventDefault();
-    logInWithEmailAndPassword(email, password);
-    auth && navigate("/");
-    setEmail("");
-    setPassword("");
+    try {
+      const res = await signInWithEmailAndPassword(auth, email, password);
+      console.log(res);
+      setEmail("");
+      setPassword("");
+    } catch (err) {
+      alert(err);
+    }
+  };
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await createUserWithEmailAndPassword(auth, email, password);
+      console.log(res);
+      setEmail("");
+      setPassword("");
+    } catch (err) {
+      alert(err);
+    }
+  };
+
+  const signInWithGoogle = async () => {
+    try {
+      const res = await signInWithPopup(auth, googleProvider);
+      console.log(res);
+    } catch (err) {
+      alert(err.message);
+      return false;
+    }
+  };
+
+  const signInWithFacebook = async () => {
+    try {
+      const res = await signInWithPopup(auth, facebookProvider);
+      console.log(res);
+    } catch (err) {
+      alert(err.message);
+      return false;
+    }
   };
 
   return (
@@ -49,7 +87,7 @@ const Login = () => {
               />
               <p onClick={signInWithGoogle}>Continue With Google</p>
             </div>
-            <div className="login__authOption">
+            <div className="login__authOption" onClick={signInWithFacebook}>
               <img
                 className="login__googleAuth"
                 src="https://1000logos.net/wp-content/uploads/2016/11/Facebook-logo-500x350.png"
@@ -60,7 +98,7 @@ const Login = () => {
           </div>
           <div className="login__emailPass">
             <div className="login__label">
-              <h4>Login</h4>
+              <h4>Login/Register</h4>
             </div>
             <div className="login__inputFields">
               <div className="login__inputField">
@@ -81,10 +119,8 @@ const Login = () => {
               </div>
             </div>
             <div className="login__forgButt">
-              <small onClick={() => navigate("/forgotPassword")}>
-                Forgot Password?
-              </small>
-              <button onClick={() => navigate("/register")}>Register</button>
+              <small>Forgot Password?</small>
+              <button onClick={handleRegister}>Register</button>
             </div>
             <button onClick={handleSignIn}>Login</button>
           </div>

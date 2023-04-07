@@ -9,11 +9,11 @@ import {
     createUserWithEmailAndPassword,
     sendPasswordResetEmail,
     signOut,
-    FacebookAuthProvider
+    FacebookAuthProvider,
+    onAuthStateChanged
 } from "firebase/auth";
 import {
-    getFirestore,
-    onAuthStateChanged
+    getFirestore
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -35,88 +35,15 @@ const googleProvider = new GoogleAuthProvider();
 const facebookProvider = new FacebookAuthProvider();
 
 
-const signInWithGoogle = async () => {
-    try {
-        const res = await signInWithPopup(auth, googleProvider);
-
-        if (auth) {
-            console.log(auth)
-            return true;
-        }
-    } catch (err) {
-        alert(err.message);
-        return false;
-    }
-};
-const signInWithFacebook = async () => {
-    try {
-        const res = await signInWithPopup(auth, facebookProvider);
-        if (auth) {
-            console.log(auth)
-            return true;
-        }
-    } catch (err) {
-        alert(err.message);
-        return false;
-    }
-};
-
-
-const logInWithEmailAndPassword = async (email, password) => {
-    try {
-        await signInWithEmailAndPassword(auth, email, password);
-        if (auth) {
-            console.log(auth)
-            return true;
-        }
-    } catch (err) {
-        alert(err.message);
-        return false;
-    }
-};
-
-
-const printAuth = () => {
-    console.log(auth)
-}
-
-
-const registerWithEmailAndPassword = async (name, email, password) => {
-    try {
-        const res = await createUserWithEmailAndPassword(auth, email, password);
-        if (auth) {
-            console.log(auth)
-            return true;
-        }
-    } catch (err) {
-        alert(err.message);
-    }
-};
-
-const sendPasswordReset = async (email) => {
-    try {
-        await sendPasswordResetEmail(auth, email);
-        alert("Password reset link sent!");
-        return true;
-    } catch (err) {
-        alert("Email not found, Please check your email.");
-        return false;
-    }
-};
-
-
-const logout = () => {
-    signOut(auth);
-};
-
-
 export {
     auth,
     db,
-    signInWithGoogle,
-    signInWithFacebook,
-    logInWithEmailAndPassword,
-    registerWithEmailAndPassword,
-    sendPasswordReset,
-    logout,
+    googleProvider,
+    facebookProvider,
+    signInWithPopup,
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    sendPasswordResetEmail,
+    signOut,
+    onAuthStateChanged
 };
