@@ -8,18 +8,34 @@ import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutline
 import LoopOutlinedIcon from "@mui/icons-material/LoopOutlined";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import Modal from "react-modal";
-import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
-import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
-import LinkOutlinedIcon from "@mui/icons-material/LinkOutlined";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectQuestionId,
+  selectQuestionName,
+  setQuestionInfo,
+} from "../../features/questionSlice";
 
 const Post = ({ id, image, question, timestamp, quoraUser }) => {
   const [openModal, setOpenModal] = useState(false);
   const [answer, setAnswer] = useState("");
+  const dispatch = useDispatch();
+  const questionId = useSelector(selectQuestionId);
 
-  const handleAddAnswer = () => {};
+  const questionName = useSelector(selectQuestionName);
+
+  const handleAddAnswer = (e) => {
+    e.preventDefault();
+    if (questionId) {
+    }
+  };
 
   return (
-    <div className="post">
+    <div
+      className="post"
+      onClick={() =>
+        dispatch(setQuestionInfo({ questionId: id, questionName: question }))
+      }
+    >
       <div className="post_info">
         <Avatar src={quoraUser.photo} />
         <h4>
@@ -58,8 +74,9 @@ const Post = ({ id, image, question, timestamp, quoraUser }) => {
             <div className="modal__answer">
               <textarea
                 value={answer}
+                required
                 onChange={(e) => setAnswer(e.target.value)}
-                placeholder="Enter Your Answer"
+                placeholder="Enter Your Answer Here"
                 type="text"
               />
             </div>
