@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Avatar } from "@mui/material";
 import "./post.scss";
 import { Button, Input } from "@mui/material";
@@ -14,26 +14,81 @@ import {
   selectQuestionName,
   setQuestionInfo,
 } from "../../features/questionSlice";
+import {
+  collection,
+  doc,
+  setDoc,
+  getDoc,
+  query,
+  orderBy,
+  onSnapshot,
+  serverTimestamp,
+} from "firebase/firestore";
+import { db } from "../auth/firebase";
+import { selectUser } from "../../features/userSlice";
 
-const Post = ({ id, image, question, timestamp, quoraUser }) => {
+const Post = ({ Id, image, question, timestamp, quoraUser }) => {
   const [openModal, setOpenModal] = useState(false);
   const [answer, setAnswer] = useState("");
+  const [answerList, setAnswerList] = useState([]);
   const dispatch = useDispatch();
   const questionId = useSelector(selectQuestionId);
+  const user = useSelector(selectUser);
+  const [showAnswer, setShowAnswer] = useState(false);
 
   const questionName = useSelector(selectQuestionName);
 
-  const handleAddAnswer = (e) => {
+  const handleAddAnswer = async (e) => {
     e.preventDefault();
-    if (questionId) {
+
+    if (questionId && answer) {
+      const data = {
+        questionId: questionId,
+        timestamp: serverTimestamp(),
+        answer: answer,
+        user: user,
+      };
+      await setDoc(doc(db, "answer", questionId), data);
+      console.log("stroed");
+    }
+
+    setAnswer("");
+    setOpenModal(false);
+  };
+
+  const fetchAnswers = async () => {
+    try {
+      const q = await query(
+        collection(db, "answer"),
+        orderBy("timestamp", "asc")
+      );
+
+      await onSnapshot(q, (querySnapshot) => {
+        setAnswerList(
+          querySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            answers: doc.data(),
+          }))
+        );
+      });
+      console.log(answerList);
+    } catch (err) {
+      console.log(err);
     }
   };
+
+  const handleShowAnswers = (e) => {
+    fetchAnswers();
+    setShowAnswer(!showAnswer);
+  };
+
+  useEffect(() => {}, [questionId]);
 
   return (
     <div
       className="post"
       onClick={() =>
-        dispatch(setQuestionInfo({ questionId: id, questionName: question }))
+        dispatch(setQuestionInfo({ questionId: Id, questionName: question }))
       }
     >
       <div className="post_info">
@@ -45,7 +100,9 @@ const Post = ({ id, image, question, timestamp, quoraUser }) => {
       </div>
       <div className="post_body">
         <div className="post_question">
-          <p>{question}</p>
+          <p onClick={handleShowAnswers} name={question}>
+            {question}
+          </p>
           <Button className="post_btnAnswer" onClick={() => setOpenModal(true)}>
             Answer
           </Button>
@@ -90,9 +147,42 @@ const Post = ({ id, image, question, timestamp, quoraUser }) => {
             </div>
           </Modal>
         </div>
-        <div className="post_answer">
-          <p></p>
-        </div>
+        {showAnswer && (
+          <div className="post__answer">
+            {answerList.map(({ id, answers }) => (
+              <p
+                key={id}
+                style={{ position: "relative", paddingBottom: "5px" }}
+              >
+                {Id === answers.questionId ? (
+                  <span>
+                    {answers.answer}
+                    <br />
+                    <span
+                      style={{
+                        position: "absolute",
+                        color: "gray",
+                        fontSize: "small",
+                        display: "flex",
+                        right: "0px",
+                      }}
+                    >
+                      <span style={{ color: "#b92b27" }}>
+                        {answers.user.displayName
+                          ? answers.user.displayName
+                          : answers.user.email}{" "}
+                        on{" "}
+                        {new Date(answers.timestamp?.toDate()).toLocaleString()}
+                      </span>
+                    </span>
+                  </span>
+                ) : (
+                  ""
+                )}
+              </p>
+            ))}
+          </div>
+        )}
         <img src={image} alt="post" />
       </div>
       <div className="post_footer">
