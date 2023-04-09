@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://quora-clone-sanju2201.netlify.app/">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Quora_logo_2015.svg/768px-Quora_logo_2015.svg.png?20170609154433" alt="Logo" width="110" height="80">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Quora_logo_2015.svg/768px-Quora_logo_2015.svg.png?20170609154433" alt="Logo" width="200" height="80">
   </a>
 
   <h1 align="center">Quora Clone</h1>
