@@ -28,10 +28,10 @@ import { db } from "../auth/firebase";
 import { selectUser } from "../../features/userSlice";
 
 const Post = ({ Id, image, question, timestamp, quoraUser }) => {
+  const dispatch = useDispatch();
   const [openModal, setOpenModal] = useState(false);
   const [answer, setAnswer] = useState("");
   const [answerList, setAnswerList] = useState([]);
-  const dispatch = useDispatch();
   const questionId = useSelector(selectQuestionId);
   const user = useSelector(selectUser);
   const [showAnswer, setShowAnswer] = useState(false);
@@ -49,11 +49,10 @@ const Post = ({ Id, image, question, timestamp, quoraUser }) => {
         user: user,
       };
       await setDoc(doc(db, "answer", questionId), data);
-      console.log("stroed");
-    }
 
-    setAnswer("");
-    setOpenModal(false);
+      setAnswer("");
+      setOpenModal(false);
+    }
   };
 
   const fetchAnswers = async () => {
@@ -100,9 +99,7 @@ const Post = ({ Id, image, question, timestamp, quoraUser }) => {
       </div>
       <div className="post_body">
         <div className="post_question">
-          <p onClick={handleShowAnswers} name={question}>
-            {question}
-          </p>
+          <p onClick={handleShowAnswers}>{question}</p>
           <Button className="post_btnAnswer" onClick={() => setOpenModal(true)}>
             Answer
           </Button>
@@ -155,16 +152,21 @@ const Post = ({ Id, image, question, timestamp, quoraUser }) => {
                 style={{ position: "relative", paddingBottom: "5px" }}
               >
                 {Id === answers.questionId ? (
-                  <span>
-                    {answers.answer}
-                    <br />
-                    <span
+                  <span
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <p style={{ padding: "0 0 10px 0" }}>{answers.answer}</p>
+                    <p
                       style={{
                         position: "absolute",
                         color: "gray",
                         fontSize: "small",
                         display: "flex",
-                        right: "0px",
+                        right: "10px",
+                        bottom: "0",
                       }}
                     >
                       <span style={{ color: "#b92b27" }}>
@@ -174,7 +176,7 @@ const Post = ({ Id, image, question, timestamp, quoraUser }) => {
                         on{" "}
                         {new Date(answers.timestamp?.toDate()).toLocaleString()}
                       </span>
-                    </span>
+                    </p>
                   </span>
                 ) : (
                   ""

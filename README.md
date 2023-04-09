@@ -1,46 +1,47 @@
-# Getting Started with Create React App and Redux
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://quora-clone-sanju2201.netlify.app/">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Quora_logo_2015.svg/768px-Quora_logo_2015.svg.png?20170609154433" alt="Logo" width="110" height="80">
+  </a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+  <h1 align="center">Quora Clone</h1>
 
-## Available Scripts
+  <p align="center">
+    Quora is a question-and-answer platform that allows users to ask and answer questions on a wide range of topics.
+    <br />
+    <br />
+    <a href="https://quora-clone-sanju2201.netlify.app/">View Demo</a>
+  </p>
+</div>
 
-In the project directory, you can run:
+<h1 align="center">By- Sanju Manna</h1>
+<!-- ABOUT THE PROJECT -->
 
-### `npm start`
+## About The Project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Quora is a social question-and-answer website and online knowledge market headquartered in Mountain View, California. It was founded on June 25, 2009, and made available to the public on June 21, 2010. Users can collaborate by editing questions and commenting on answers that have been submitted by other users.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Module Usages
 
-### `npm test`
+These all Modules are to build this project.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- ### [React js]
+- ### [sass]
+- ### [react-bootstrap]
+- ### [Materail-ui]
+- ### [react-router-dom]
+- ### [react-share]
+- ### [styled-components]
+- ### [firebase] as Backend
 
-### `npm run build`
+<!-- CONTRIBUTING -->
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## In Association With
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Newton School,
+- Bengaluru, Karnataka, India
+- Email: (chitchat@gmail.com)
+<p align="right">(<a href="https://www.google.com/search?q=newton%20address%20bangalore&rlz=1C1FHFK_enIN959IN960&sxsrf=APwXEde1yX7yUV5u93Wtp2ULu1N931a9fA:1680331726003&ei=xdMnZIS9EdmbseMPw6S66AE&ved=2ahUKEwiB-Ie9i4j-AhXjV2wGHalMC5kQvS56BAgOEAE&uact=5&oq=newton+address+bangalore&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIGCAAQFhAeMggIABCKBRCGAzIICAAQigUQhgM6CggAEEcQ1gQQsANKBAhBGABQmQVY1htglh1oAXABeACAAeABiAGJDJIBBTAuOS4xmAEAoAEByAEIwAEB&sclient=gws-wiz-serp&tbs=lf:1,lf_ui:2&tbm=lcl&rflfq=1&num=10&rldimm=618459276863735405&lqi=ChhuZXd0b24gYWRkcmVzcyBiYW5nYWxvcmVIq8XAw_2vgIAIWiIQABABGAAYAiIYbmV3dG9uIGFkZHJlc3MgYmFuZ2Fsb3JlkgEQY29ycG9yYXRlX29mZmljZZoBI0NoWkRTVWhOTUc5blMwVkpRMEZuU1VRdGIwdGZNR0puRUFFqgE2EAEqEiIObmV3dG9uIGFkZHJlc3MoADIeEAEiGpCGAL2kNICtIRcrqQI9WZ8lAFYKGp5IBWmU&sa=X&rlst=f#rlfi=hd:;si:618459276863735405,l,ChhuZXd0b24gYWRkcmVzcyBiYW5nYWxvcmVIq8XAw_2vgIAIWiIQABABGAAYAiIYbmV3dG9uIGFkZHJlc3MgYmFuZ2Fsb3JlkgEQY29ycG9yYXRlX29mZmljZZoBI0NoWkRTVWhOTUc5blMwVkpRMEZuU1VRdGIwdGZNR0puRUFFqgE2EAEqEiIObmV3dG9uIGFkZHJlc3MoADIeEAEiGpCGAL2kNICtIRcrqQI9WZ8lAFYKGp5IBWmU;mv:[[13.0614844,77.666647],[12.889754499999999,77.4603922]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!1m4!1u2!2m2!2m1!1e1!2m1!1e2!2m1!1e3!3sIAE,lf:1,lf_ui:2">Newton School</a>)</p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
